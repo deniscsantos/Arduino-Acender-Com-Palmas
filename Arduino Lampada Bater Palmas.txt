@@ -1,0 +1,19 @@
+//Programa para acender as luzes com palmas
+int pino_som = 7; //Pino a ser utilizado no o sensor de som
+int pino_rele = 5;     //Usado para o rele
+boolean rele = HIGH; // Booleano para usar a operacao NAO
+ 
+void setup() {
+  pinMode(pino_som, INPUT); //Pino do sensor de som como entrada
+  pinMode(pino_rele, OUTPUT);   // Do rele como saida
+}
+ 
+void loop() {
+  int som = digitalRead(pino_som); //Valida se a saida do sensor esta ativa
+   
+   if(som){ // Se o som estiver High
+    rele = !rele; //Operacao NAO: Estando LOW, passa pra HIGH. Estando HIGH passa para LOW
+    digitalWrite(pino_rele, rele); // Envia o valor da variavel para o rele
+    delay(1000); // Espera 1 segundo, assim não fica HIGH e LOW sem parar
+   }
+}
